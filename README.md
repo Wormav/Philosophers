@@ -28,4 +28,4 @@ Any other philosopher number N sits between philosopher number N - 1 and philoso
 ## License
 
 MIT License
-Copyright (c) 2024 Jérémy Lorette%
+Copyright (c) 2024 Jérémy Lorette
