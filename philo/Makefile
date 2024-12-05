@@ -10,9 +10,12 @@ SRC_DIR = src
 OBJ_DIR = obj
 INC_DIR = include
 
-# Fichiers sources et objets
-SRCS = $(SRC_DIR)/main.c
-OBJS = $(OBJ_DIR)/main.o
+# Fichiers sources
+SRCS = $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/utils/utils.c
+
+# Génération automatique des fichiers objets
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Couleurs et emojis pour le terminal
 GREEN = \033[1;32m
@@ -30,9 +33,12 @@ HEADERS = $(INC_DIR)/philo.h
 # Cible principale
 all: $(OBJ_DIR) $(NAME)
 
+# Création des répertoires nécessaires pour les objets
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/utils
 
+# Compilation du binaire
 $(NAME): $(OBJS)
 	@echo "$(YELLOW)$(BUILD_EMOJI)  Compilation en cours$(RESET)..."
 	@sleep 0.5
@@ -40,8 +46,9 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)$(SUCCESS_EMOJI) Compilation réussie : $(NAME)$(RESET)"
 
 # Compilation des fichiers objets
-$(OBJ_DIR)/main.o: $(SRC_DIR)/main.c $(HEADERS)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	@echo "$(YELLOW)$(BUILD_EMOJI)  Compilation : $<$(RESET)"
+	@mkdir -p $(@D) # Crée les sous-répertoires dans obj si nécessaire
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 # Nettoyage des fichiers objets

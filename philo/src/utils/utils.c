@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 15:22:18 by jlorette         ###   ########.fr       */
+/*   Created: 2024/12/05 14:44:01 by jlorette          #+#    #+#             */
+/*   Updated: 2024/12/05 14:44:41 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-typedef struct s_args
+int	ft_atoi(const char *str)
 {
-	int		philo_count;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		eat_count_required;
-}	t_args;
+	int	i;
+	int	result;
+	int	sign;
 
-// utils.c
-int	ft_atoi(const char *str);
-
-# endif
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -sign;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + str[i] - 48;
+		i++;
+	}
+	return (result * sign);
+}
