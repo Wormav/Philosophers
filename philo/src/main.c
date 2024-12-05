@@ -6,12 +6,27 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 15:25:02 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:57:52 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 #include <stdio.h>
+
+static t_bool	arg_error(t_args *args)
+{
+	if (args->philo_count < 2)
+	{
+		printf("Error: philo count must be at least 2\n");
+		return (TRUE);
+	}
+	if (args->time_to_die < 1 || args->time_to_eat < 1 || args->time_to_sleep < 1 || (args->eat_count_required && args->eat_count_required < 1))
+	{
+		printf("Error: time to die, eat and sleep must be at least 1\n");
+		return (TRUE);
+	}
+	return (FALSE);
+}
 
 static void	parse_arg(char const **argv, t_args *args)
 {
@@ -36,5 +51,8 @@ int main(int argc, char const **argv)
 	printf("time to sleep: %d\n", args.time_to_sleep);
 	if (argc == 6)
 		printf("eat count required: %d\n", args.eat_count_required);
+
+	if (arg_error(&args))
+		return (1);
 	return (0);
 }

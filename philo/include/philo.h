@@ -6,12 +6,17 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 15:22:18 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/05 15:52:22 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define TRUE 1
+# define FALSE 0
+
+typedef int			t_bool;
 
 typedef struct s_args
 {
