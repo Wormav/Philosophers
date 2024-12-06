@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:50:36 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 10:01:28 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:36:33 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_bool	is_not_overflow( char *nbr, char *min, char *max)
 	return (TRUE);
 }
 
-t_bool	check_args_error( char **argv)
+t_bool	check_args_overflow( char **argv)
 {
 	int i;
 

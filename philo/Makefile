@@ -14,7 +14,9 @@ INC_DIR = include
 SRCS = $(SRC_DIR)/main.c \
 	   $(SRC_DIR)/utils/utils.c \
 	   $(SRC_DIR)/utils/utils_2.c \
-	   $(SRC_DIR)/parsing/check.c
+	   $(SRC_DIR)/parsing/overflow.c \
+	   $(SRC_DIR)/parsing/parsing.c \
+	   $(SRC_DIR)/parsing/valid_arg.c
 
 # Génération automatique des fichiers objets
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)

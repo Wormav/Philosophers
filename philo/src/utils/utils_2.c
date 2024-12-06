@@ -6,12 +6,13 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:04:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:10:15 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:57:23 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 #include <stdlib.h>
+#include <unistd.h>
 
 static int	ft_strlcpy(char *dest,  char *src, unsigned int size)
 {
@@ -80,4 +81,19 @@ char	*ft_strdup(char *src)
 		return (NULL);
 	ft_strlcpy(result, src, len);
 	return (result);
+}
+
+void	print_error(char *str)
+{
+	int i;
+	char newline;
+
+	newline = '\n';
+	i = 0;
+	while (str[i])
+	{
+		write(2, &str[i], 1);
+		i++;
+	}
+	write(2, &newline, 1);
 }

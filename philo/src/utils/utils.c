@@ -6,10 +6,11 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:44:01 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:07:27 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:41:14 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../include/philo.h"
 #include <unistd.h>
 
 int	ft_atoi( char *str)
@@ -57,4 +58,9 @@ int	ft_strlen( char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+t_bool	is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
 }
