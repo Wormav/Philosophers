@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 15:57:52 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 07:53:35 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static t_bool	arg_error(t_args *args)
 	}
 	return (FALSE);
 }
+
+// test
 
 static void	parse_arg(char const **argv, t_args *args)
 {
