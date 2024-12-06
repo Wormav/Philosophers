@@ -12,7 +12,8 @@ INC_DIR = include
 
 # Fichiers sources
 SRCS = $(SRC_DIR)/main.c \
-	   $(SRC_DIR)/utils/utils.c
+	   $(SRC_DIR)/utils/utils.c \
+	   $(SRC_DIR)/parsing/check.c
 
 # Génération automatique des fichiers objets
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
