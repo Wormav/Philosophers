@@ -6,12 +6,12 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 09:48:34 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 11:11:24 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PHILO_H
+# define PHILO_H
 
 # define TRUE 1
 # define FALSE 0
@@ -29,15 +29,14 @@ typedef struct s_args
 
 // utils.c
 int		ft_atoi( char *str);
-char *ft_strdup(char *src);
-int ft_strlcpy(char *dest, const char *src, unsigned int size);
-int ft_strlen(char *str);
-char *ft_strjoin(char const *s1, char const *s2);
-int ft_strncmp(char *s1, char *s2, unsigned int n);
-int ft_strlcat(char *dest, const char *src,  int size);
+int		ft_strlen(char *str);
+int		ft_strncmp(char *s1, char *s2, unsigned int n);
 
+// utils_2.c
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *src);
 
 // check.c
 t_bool	check_args_error( char **argv);
 
-# endif
+#endif

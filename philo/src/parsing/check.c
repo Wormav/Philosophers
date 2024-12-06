@@ -6,12 +6,11 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:50:36 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 09:56:53 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/06 10:01:28 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
-#include <unistd.h>
 #include <stdlib.h>
 
 static char	*trim_leading_zeros(char *str)
@@ -48,11 +47,10 @@ static void	trim_zero_from_argv(char **argv)
 		with_sign = trim_leading_zeros(argv[i]);
 		if (!with_sign)
 		{
-			// Si une erreur se produit, vous pouvez gérer autrement, mais ne faites pas de free ici.
 			argv[i] = NULL;
 			return ;
 		}
-		argv[i] = with_sign; // Remplace directement sans libérer
+		argv[i] = with_sign;
 		i++;
 	}
 }
