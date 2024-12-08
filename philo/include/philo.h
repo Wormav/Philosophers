@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 15:36:49 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:13:15 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # define TRUE 1
 # define FALSE 0
 
-# define ERROR_USAGE_MSG "Error: Invalid arguments.\n"
+typedef int	t_bool;
+
+# define ERROR_USAGE_MSG "Error: Invalid numbers arguments for use philo.\n"
 
 # define ARGUMENT_LIMIT_MSG "Error: Arguments INT limits.\n"
 
 # define INVALID_ARG_MSG "Error: Invalid argument format.\n"
 
 # define NEGATIVE_ARG_MSG "Error: Arguments must be non-negative integers.\n"
-
-typedef int			t_bool;
 
 typedef struct s_args
 {

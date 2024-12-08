@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:04:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 15:41:19 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:01:01 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,13 @@ char	*ft_strdup(char *src)
 
 void	print_error(char *str)
 {
-	int		i;
-	char	newline;
+	char	*red_color;
+	char	*reset_color;
 
-	newline = '\n';
-	i = 0;
-	while (str[i])
-	{
-		write(2, &str[i], 1);
-		i++;
-	}
-	write(2, &newline, 1);
+	red_color = "\033[1;31m";
+	reset_color = "\033[0m";
+	write(2, red_color, ft_strlen(red_color));
+	write(2, str, ft_strlen(str));
+	write(2, reset_color, ft_strlen(reset_color));
+	write(2, "\n", 1);
 }
