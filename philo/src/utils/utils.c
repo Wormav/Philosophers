@@ -6,14 +6,14 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:44:01 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:41:14 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:40:09 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 #include <unistd.h>
 
-int	ft_atoi( char *str)
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	result;
@@ -38,7 +38,7 @@ int	ft_atoi( char *str)
 	return (result * sign);
 }
 
-int	ft_strncmp( char *s1,  char *s2, unsigned int n)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
 	unsigned int	i;
 

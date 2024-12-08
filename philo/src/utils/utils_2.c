@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:04:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:57:23 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:41:19 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static int	ft_strlcpy(char *dest,  char *src, unsigned int size)
+static int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
 
@@ -30,7 +30,7 @@ static int	ft_strlcpy(char *dest,  char *src, unsigned int size)
 	return (ft_strlen(src));
 }
 
-static int	ft_strlcat(char *dest,  char *src, int size)
+static int	ft_strlcat(char *dest, char *src, int size)
 {
 	int	dest_len;
 	int	src_len;
@@ -52,11 +52,11 @@ static int	ft_strlcat(char *dest,  char *src, int size)
 	return (dest_len + src_len);
 }
 
-char	*ft_strjoin(char  *s1, char  *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*result;
-	int	len_s1;
-	int	len_s2;
+	int		len_s1;
+	int		len_s2;
 
 	if (!s1)
 		return (NULL);
@@ -73,7 +73,7 @@ char	*ft_strjoin(char  *s1, char  *s2)
 char	*ft_strdup(char *src)
 {
 	char	*result;
-	int	len;
+	int		len;
 
 	len = ft_strlen(src) + 1;
 	result = malloc(sizeof(char) * len);
@@ -85,8 +85,8 @@ char	*ft_strdup(char *src)
 
 void	print_error(char *str)
 {
-	int i;
-	char newline;
+	int		i;
+	char	newline;
 
 	newline = '\n';
 	i = 0;

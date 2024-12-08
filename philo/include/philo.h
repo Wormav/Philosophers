@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:53:36 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:36:49 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # define TRUE 1
 # define FALSE 0
 
-#define ERROR_USAGE_MSG "Error: Invalid arguments.\nUsage: ./philo number_of_philosophers time_to_die time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n"
+# define ERROR_USAGE_MSG "Error: Invalid arguments.\n"
 
-# define ARGUMENT_LIMIT_MSG "Error: Arguments must be positive integers and not exceed INT_MAX.\n"
+# define ARGUMENT_LIMIT_MSG "Error: Arguments INT limits.\n"
 
 # define INVALID_ARG_MSG "Error: Invalid argument format.\n"
 
@@ -39,7 +39,7 @@ typedef struct s_args
 int		ft_atoi( char *str);
 int		ft_strlen(char *str);
 int		ft_strncmp(char *s1, char *s2, unsigned int n);
-t_bool is_digit(char c);
+t_bool	is_digit(char c);
 
 // utils_2.c
 char	*ft_strjoin(char *s1, char *s2);
@@ -50,9 +50,9 @@ void	print_error(char *str);
 t_bool	check_args_overflow( char **argv);
 
 // valid_arg.c
-t_bool check_args_format(char **argv);
+t_bool	check_args_format(char **argv);
 
 // parsing.c
-t_bool parsing_process(int argc, char **argv, t_args *args);
+t_bool	parsing_process(int argc, char **argv, t_args *args);
 
 #endif

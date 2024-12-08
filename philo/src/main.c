@@ -6,16 +6,16 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:56:00 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:38:15 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 #include <stdio.h>
 
-int main(int argc, char	**argv)
+int	main(int argc, char	**argv)
 {
-	t_args args;
+	t_args	args;
 
 	if (!parsing_process(argc, argv, &args))
 		return (1);

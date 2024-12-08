@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:45:05 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/06 11:59:00 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:42:58 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static t_bool	is_valid_number(char *arg)
 			return (FALSE);
 		i++;
 	}
-
 	return (TRUE);
 }
 
