@@ -3,7 +3,8 @@ NAME = philo
 
 # Variables pour les commandes
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# ! retirer le -g pour le rendu
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Répertoires
 SRC_DIR = src

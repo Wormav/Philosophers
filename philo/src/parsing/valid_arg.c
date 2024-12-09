@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:45:05 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 17:13:30 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:39:16 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_bool	check_args_format(char **argv)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (!is_valid_number(argv[i]))

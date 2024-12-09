@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:21:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 17:05:00 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 08:52:45 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static t_bool	arg_error_neg(t_args *args)
 {
-	// ? voir si on peut lancer avec 1 philo
-	// if (args->philo_count < 2)
-	// {
-	// 	printf("Error: philo count must be at least 2\n");
-	// 	return (TRUE);
-	// }
+	if (args->philo_count < 2)
+		return (TRUE);
 	if (args->time_to_die < 1 || args->time_to_eat < 1
 		|| args->time_to_sleep < 1 || (args->eat_count_required
 			&& args->eat_count_required < 1))
@@ -44,7 +40,7 @@ t_bool	parsing_process(int argc, char **argv, t_args *args)
 		print_error(ERROR_USAGE_MSG);
 		return (FALSE);
 	}
-	if (check_args_format(argv))
+	if (!check_args_format(argv))
 	{
 		print_error(INVALID_ARG_MSG);
 		return (FALSE);
@@ -57,7 +53,10 @@ t_bool	parsing_process(int argc, char **argv, t_args *args)
 	parse_arg(argv, args);
 	if (arg_error_neg(args))
 	{
-		print_error(NEGATIVE_ARG_MSG);
+		if (args->philo_count < 1)
+			print_error(NO_PHILO_MSG);
+		else
+			print_error(NEGATIVE_ARG_MSG);
 		return (FALSE);
 	}
 	return (TRUE);
