@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:50:36 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 15:43:08 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:46:41 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ static char	*trim_leading_zeros(char *str)
 	return (trimmed);
 }
 
-static void	trim_zero_from_argv(char **argv)
-{
-	int		i;
-	char	*with_sign;
+// static void	trim_zero_from_argv(char **argv)
+// {
+// 	int		i;
+// 	char	*with_sign;
 
-	i = 0;
-	while (argv[i])
-	{
-		with_sign = trim_leading_zeros(argv[i]);
-		if (!with_sign)
-		{
-			argv[i] = NULL;
-			return ;
-		}
-		argv[i] = with_sign;
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (argv[i])
+// 	{
+// 		with_sign = trim_leading_zeros(argv[i]);
+// 		if (!with_sign)
+// 		{
+// 			argv[i] = NULL;
+// 			return ;
+// 		}
+// 		argv[i] = with_sign;
+// 		i++;
+// 	}
+// }
 
 static t_bool	is_not_overflow( char *nbr, char *min, char *max)
 {
@@ -81,16 +81,23 @@ static t_bool	is_not_overflow( char *nbr, char *min, char *max)
 	return (TRUE);
 }
 
-t_bool	check_args_overflow( char **argv)
+t_bool	check_args_overflow(char **argv)
 {
-	int	i;
+	int		i;
+	char	*trimmed;
 
 	i = 0;
-	trim_zero_from_argv(argv);
 	while (argv[i])
 	{
-		if (!is_not_overflow(argv[i], "-2147483648", "2147483647"))
+		trimmed = trim_leading_zeros(argv[i]);
+		if (!trimmed)
 			return (TRUE);
+		if (!is_not_overflow(trimmed, "-2147483648", "2147483647"))
+		{
+			free(trimmed);
+			return (TRUE);
+		}
+		free(trimmed);
 		i++;
 	}
 	return (FALSE);

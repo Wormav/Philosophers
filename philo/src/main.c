@@ -6,17 +6,19 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/08 15:38:15 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:46:06 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 #include <stdio.h>
+#include <string.h>
 
 int	main(int argc, char	**argv)
 {
 	t_args	args;
 
+	memset(&args, 0, sizeof(t_args));
 	if (!parsing_process(argc, argv, &args))
 		return (1);
 	printf("philo count: %d\n", args.philo_count);
