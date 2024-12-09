@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/09 08:52:36 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:13:28 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # define TRUE 1
 # define FALSE 0
+
+#include <pthread.h>
 
 typedef int	t_bool;
 
@@ -36,6 +38,20 @@ typedef struct s_args
 	int		time_to_sleep;
 	int		eat_count_required;
 }	t_args;
+
+typedef struct s_philos
+{
+	int				id;
+	int             meals_eaten;
+	unsigned long   last_meal_time;
+	int             eat_count_required;
+	int				last_eat;
+	t_args 			args;
+	pthread_mutex_t *left_fork;
+	pthread_mutex_t *right_fork;
+	struct s_philos	*prev;
+	struct s_philos	*next;
+}	t_philos;
 
 // utils.c
 int		ft_atoi( char *str);
