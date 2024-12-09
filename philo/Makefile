@@ -3,7 +3,8 @@ NAME = philo
 
 # Variables pour les commandes
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+# ! retirer le -g pour le rendu
+CFLAGS = -Wall -Wextra -Werror -g
 
 # Répertoires
 SRC_DIR = src
@@ -12,7 +13,11 @@ INC_DIR = include
 
 # Fichiers sources
 SRCS = $(SRC_DIR)/main.c \
-	   $(SRC_DIR)/utils/utils.c
+	   $(SRC_DIR)/utils/utils.c \
+	   $(SRC_DIR)/utils/utils_2.c \
+	   $(SRC_DIR)/parsing/overflow.c \
+	   $(SRC_DIR)/parsing/parsing.c \
+	   $(SRC_DIR)/parsing/valid_arg.c
 
 # Génération automatique des fichiers objets
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
@@ -43,11 +48,10 @@ $(NAME): $(OBJS)
 	@echo "$(YELLOW)$(BUILD_EMOJI)  Compilation en cours$(RESET)..."
 	@sleep 0.5
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-	@echo "$(GREEN)$(SUCCESS_EMOJI) Compilation réussie : $(NAME)$(RESET)"
+	@echo "$(GREEN)$(SUCCESS_EMOJI) Compilation réussie: $(NAME)$(RESET)"
 
 # Compilation des fichiers objets
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
-	@echo "$(YELLOW)$(BUILD_EMOJI)  Compilation : $<$(RESET)"
 	@mkdir -p $(@D) # Crée les sous-répertoires dans obj si nécessaire
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 

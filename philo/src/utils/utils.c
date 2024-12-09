@@ -6,11 +6,14 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:44:01 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 14:44:41 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/08 15:40:09 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+#include "../../include/philo.h"
+#include <unistd.h>
+
+int	ft_atoi(char *str)
 {
 	int	i;
 	int	result;
@@ -33,4 +36,31 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] == s2[i] && s1[i] && i < n - 1)
+		i++;
+	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+}
+
+int	ft_strlen( char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+t_bool	is_digit(char c)
+{
+	return (c >= '0' && c <= '9');
 }

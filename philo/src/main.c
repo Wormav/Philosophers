@@ -6,30 +6,21 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/05 15:25:02 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:46:06 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 #include <stdio.h>
+#include <string.h>
 
-static void	parse_arg(char const **argv, t_args *args)
+int	main(int argc, char	**argv)
 {
-	args->philo_count = ft_atoi(argv[1]);
-	args->time_to_die = ft_atoi(argv[2]);
-	args->time_to_eat = ft_atoi(argv[3]);
-	args->time_to_sleep = ft_atoi(argv[4]);
-	if (argv[5])
-		args->eat_count_required = ft_atoi(argv[5]);
-}
+	t_args	args;
 
-int main(int argc, char const **argv)
-{
-	t_args args;
-
-	if (argc < 5)
+	memset(&args, 0, sizeof(t_args));
+	if (!parsing_process(argc, argv, &args))
 		return (1);
-	parse_arg(argv, &args);
 	printf("philo count: %d\n", args.philo_count);
 	printf("time to die: %d\n", args.time_to_die);
 	printf("time to eat: %d\n", args.time_to_eat);
