@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:21:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/09 08:52:45 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:09:18 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_bool	arg_error_neg(t_args *args)
 {
-	if (args->philo_count < 2)
+	if (args->philo_count < 1)
 		return (TRUE);
 	if (args->time_to_die < 1 || args->time_to_eat < 1
 		|| args->time_to_sleep < 1 || (args->eat_count_required
