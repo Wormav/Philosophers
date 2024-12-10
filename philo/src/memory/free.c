@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/10 14:43:39 by jlorette         ###   ########.fr       */
+/*   Created: 2024/12/10 14:34:17 by jlorette          #+#    #+#             */
+/*   Updated: 2024/12/10 14:34:30 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-#include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <pthread.h>
 
-int	main(int argc, char **argv)
+void	cleanup_sim(t_sim *sim)
 {
-	t_args	args;
-	t_sim	*sim;
+	int	i;
 
-	memset(&args, 0, sizeof(t_args));
-	if (!parsing_process(argc, argv, &args))
-		return (1);
-	sim = init_sim(&args);
-	if (!sim)
-		return (1);
-	if (!init_philos(sim))
+	if (sim->philos)
+		free(sim->philos);
+	if (sim->forks)
 	{
-		cleanup_sim(sim);
-		return (1);
+		i = 0;
+		while (i < sim->args->philo_count)
+		{
+			pthread_mutex_destroy(&sim->forks[i]);
+			i++;
+		}
+		free(sim->forks);
 	}
-	cleanup_sim(sim);
-	return (0);
+	pthread_mutex_destroy(&sim->write_lock);
+	free(sim);
 }
