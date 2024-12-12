@@ -21,6 +21,7 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/parsing/valid_arg.c \
 		$(SRC_DIR)/philos/philos_gestion.c \
 		$(SRC_DIR)/philos/routine.c \
+		$(SRC_DIR)/philos/print_action.c \
 		$(SRC_DIR)/sim/sim_init.c \
 		$(SRC_DIR)/memory/free.c
 

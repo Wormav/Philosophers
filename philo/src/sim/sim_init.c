@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:55:28 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/12 16:53:51 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:01:57 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static t_sim	*allocate_sim_and_forks(t_args *args)
 		free(sim);
 		return (NULL);
 	}
+	sim->start_time = get_time();
 	sim->philos_dead = FALSE;
 	return (sim);
 }

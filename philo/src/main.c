@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/12 16:25:26 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:42:48 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	main(int argc, char **argv)
             print_error("Error: Failed to create thread for philosopher\n");
             break;
         }
-        printf("Thread created for philosopher %d\n", i + 1);
         i++;
     }
     // ? Attente de la fin des threads

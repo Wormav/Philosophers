@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/12 15:55:17 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:41:11 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ typedef int	t_bool;
 # define NEGATIVE_ARG_MSG "Error: Arguments must be non-negative integers."
 
 # define NO_PHILO_MSG "Error: philo count must be at least 1"
+
+# define PHILO_ID_MSG "⏰ %lu Philosopher %d %s\n\n"
+
+# define PHILO_SLEEP_MSG "is sleeping 🛏️"
+
+# define PHILO_EAT_MSG "is eating 🍝"
+
+# define PHILO_THINK_MSG "is thinking 💭"
+
+# define PHILO_DEAD_MSG "died 💀"
+
+# define PHILO_FORK_MSG "has taken a fork 🍴"
 
 typedef struct s_args
 {
@@ -93,6 +105,9 @@ t_sim	*init_sim(t_args *args);
 
 // philos_gestions.c
 t_bool	init_philos(t_sim *sim);
+
+// print_action.c
+void	print_action(t_sim *sim, int philo_id, const char *action);
 
 // routine.c
 void *philosopher_routine(void *arg);
