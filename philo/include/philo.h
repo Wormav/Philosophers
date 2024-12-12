@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/10 14:39:26 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:55:17 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,14 @@ typedef struct s_sim
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write_lock;
 	unsigned long	start_time;
+	t_bool			philos_dead;
 }	t_sim;
+
+typedef struct s_philo_wrapper
+{
+    t_philos *philo;
+    t_sim *sim;
+} t_philo_wrapper;
 
 // utils.c
 int		ft_atoi( char *str);
@@ -68,6 +75,9 @@ t_bool	is_digit(char c);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *src);
 void	print_error(char *str);
+
+// time.c
+unsigned long get_time(void);
 
 // overflow.c
 t_bool	check_args_overflow( char **argv);
@@ -83,6 +93,9 @@ t_sim	*init_sim(t_args *args);
 
 // philos_gestions.c
 t_bool	init_philos(t_sim *sim);
+
+// routine.c
+void *philosopher_routine(void *arg);
 
 // free.c
 void	cleanup_sim(t_sim *sim);
