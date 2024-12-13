@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/12 17:41:11 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:11:15 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef int	t_bool;
 
 # define NO_PHILO_MSG "Error: philo count must be at least 1"
 
-# define PHILO_ID_MSG "⏰ %lu Philosopher %d %s\n\n"
+# define PHILO_ID_MSG "⌚ %lu Philosopher %d %s\n\n"
 
 # define PHILO_SLEEP_MSG "is sleeping 🛏️"
 
@@ -107,10 +107,17 @@ t_sim	*init_sim(t_args *args);
 t_bool	init_philos(t_sim *sim);
 
 // print_action.c
-void	print_action(t_sim *sim, int philo_id, const char *action);
+void print_action(t_sim *sim, t_philos *philo, const char *action);
 
 // routine.c
 void *philosopher_routine(void *arg);
+
+// routine_utils.c
+t_bool check_death(t_sim *sim, t_philos *philo);
+t_bool take_forks(t_sim *sim, t_philos *philo,
+						 pthread_mutex_t *first_fork, pthread_mutex_t *second_fork);
+void select_forks(t_philos *philo,
+				  pthread_mutex_t **first_fork, pthread_mutex_t **second_fork);
 
 // free.c
 void	cleanup_sim(t_sim *sim);

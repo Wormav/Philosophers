@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/13 11:08:41 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:28:30 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,30 @@ int	main(int argc, char **argv)
         return (1);
     }
 	// ? Création des threads
-    i = 0;
-    while (i < args.philo_count)
+i = 0;
+while (i < args.philo_count)
+{
+    wrappers[i].philo = &sim->philos[i];
+    wrappers[i].sim = sim;
+    if (pthread_create(&threads[i], NULL, philosopher_routine, &wrappers[i]) != 0)
     {
-        wrappers[i].philo = &sim->philos[i];
-        wrappers[i].sim = sim;
-		if (wrappers->philo->id % 2 == 0)
-			usleep(1);
-        if (pthread_create(&threads[i], NULL, philosopher_routine, &wrappers[i]) != 0)
-        {
-            print_error("Error: Failed to create thread for philosopher\n");
-            break;
-        }
-        i++;
+        print_error("Error: Failed to create thread for philosopher\n");
+        while (--i >= 0)
+            pthread_join(threads[i], NULL);
+        free(threads);
+        free(wrappers);
+        cleanup_sim(sim);
+        return (1);
     }
+    i++;
+}
     // ? Attente de la fin des threads
-    i = 0;
-    while (i < args.philo_count)
-    {
-        pthread_join(threads[i], NULL);
-        print_error("Thread joined for philosopher\n");
-        i++;
-    }
+	i = 0;
+	while (i < args.philo_count)
+	{
+    	pthread_join(threads[i], NULL);
+    	i++;
+	}
     // ? Nettoyage final
     free(threads);
     free(wrappers);
