@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/13 15:47:34 by jlorette         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/philo.h"
 #include <stdio.h>
 #include <string.h>
@@ -47,20 +35,6 @@ int	main(int argc, char **argv)
         cleanup_sim(sim);
         return (1);
     }
-	// ? si un philo == 1
-	if (args.philo_count == 1)
-{
-    pthread_mutex_lock(sim->philos[0].left_fork);
-    print_action(sim, &sim->philos[0], PHILO_FORK_MSG);
-    usleep(args.time_to_die * 1000);
-    pthread_mutex_lock(&sim->write_lock);
-    printf(PHILO_ID_MSG, get_time() - sim->start_time,
-        sim->philos[0].id, PHILO_DEAD_MSG);
-    pthread_mutex_unlock(&sim->write_lock);
-    pthread_mutex_unlock(sim->philos[0].left_fork);
-    cleanup_sim(sim);
-    return (0);
-}
     // ? Création des threads pour les philosophes
     threads = malloc(sizeof(pthread_t) * args.philo_count);
     wrappers = malloc(sizeof(t_philo_wrapper) * args.philo_count);
