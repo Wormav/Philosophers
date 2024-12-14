@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/13 15:42:20 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:46:05 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,17 @@ static void	philosopher_sleep_and_think(t_philos *philo, t_sim *sim)
 		print_action(sim, philo, PHILO_THINK_MSG);
 }
 
-void	*philosopher_routine(void *arg)
+void *philosopher_routine(void *arg)
 {
-	t_philo_wrapper	*wrapper;
-	t_philos		*philo;
-	t_sim			*sim;
+    t_philos *philo;
 
-	wrapper = (t_philo_wrapper *)arg;
-	philo = wrapper->philo;
-	sim = wrapper->sim;
-	while (!check_death(sim, philo))
-	{
-		philosopher_eat(philo, sim);
-		if (check_death(sim, philo))
-			break ;
-		philosopher_sleep_and_think(philo, sim);
-	}
-	return (NULL);
+    philo = (t_philos *)arg;
+    while (!check_death(philo->sim, philo))
+    {
+        philosopher_eat(philo, philo->sim);
+        if (check_death(philo->sim, philo))
+            break;
+        philosopher_sleep_and_think(philo, philo->sim);
+    }
+    return (NULL);
 }

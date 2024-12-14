@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/13 15:11:15 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:50:14 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ typedef struct s_args
 
 typedef struct s_philos
 {
-	int				id;
-	int				meals_eaten;
-	unsigned long	last_meal_time;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
-	struct s_args	*args;
-}	t_philos;
+    int             id;
+    int             meals_eaten;
+    unsigned long   last_meal_time;
+    pthread_mutex_t *left_fork;
+    pthread_mutex_t *right_fork;
+    struct s_args   *args;
+    struct s_sim    *sim;
+}   t_philos;
 
 typedef struct s_sim
 {
@@ -68,14 +69,9 @@ typedef struct s_sim
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write_lock;
 	unsigned long	start_time;
+	pthread_mutex_t death_mutex;
 	t_bool			philos_dead;
 }	t_sim;
-
-typedef struct s_philo_wrapper
-{
-    t_philos *philo;
-    t_sim *sim;
-} t_philo_wrapper;
 
 // utils.c
 int		ft_atoi( char *str);

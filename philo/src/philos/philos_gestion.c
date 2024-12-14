@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:37:25 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/10 14:59:10 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:46:39 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-t_bool	init_philos(t_sim *sim)
+t_bool init_philos(t_sim *sim)
 {
-	int	i;
+    int i;
 
-	sim->philos = malloc(sizeof(t_philos) * sim->args->philo_count);
-	if (!sim->philos)
-	{
-		print_error("Error: Failed to initialize philosophers");
-		return (FALSE);
-	}
-	i = 0;
-	while (i < sim->args->philo_count)
-	{
-		sim->philos[i].id = i + 1;
-		sim->philos[i].meals_eaten = 0;
-		sim->philos[i].last_meal_time = sim->start_time;
-		sim->philos[i].left_fork = &sim->forks[i];
-		sim->philos[i].right_fork = &sim->forks[(i + 1)
-			% sim->args->philo_count];
-		sim->philos[i].args = sim->args;
-		i++;
-	}
-	return (TRUE);
+    sim->philos = malloc(sizeof(t_philos) * sim->args->philo_count);
+    if (!sim->philos)
+    {
+        print_error("Error: Failed to initialize philosophers");
+        return (FALSE);
+    }
+    i = 0;
+    while (i < sim->args->philo_count)
+    {
+        sim->philos[i].id = i + 1;
+        sim->philos[i].meals_eaten = 0;
+        sim->philos[i].last_meal_time = sim->start_time;
+        sim->philos[i].left_fork = &sim->forks[i];
+        sim->philos[i].right_fork = &sim->forks[(i + 1) % sim->args->philo_count];
+        sim->philos[i].args = sim->args;
+        sim->philos[i].sim = sim;
+        i++;
+    }
+    return (TRUE);
 }
