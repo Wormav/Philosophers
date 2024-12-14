@@ -15,10 +15,14 @@ INC_DIR = include
 SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/utils/utils.c \
 		$(SRC_DIR)/utils/utils_2.c \
+		$(SRC_DIR)/utils/time.c \
 		$(SRC_DIR)/parsing/overflow.c \
 		$(SRC_DIR)/parsing/parsing.c \
 		$(SRC_DIR)/parsing/valid_arg.c \
 		$(SRC_DIR)/philos/philos_gestion.c \
+		$(SRC_DIR)/philos/routine.c \
+		$(SRC_DIR)/philos/routine_utils.c \
+		$(SRC_DIR)/philos/print_action.c \
 		$(SRC_DIR)/sim/sim_init.c \
 		$(SRC_DIR)/memory/free.c
 
