@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:05:22 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/13 15:23:59 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:12:51 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,6 @@ static t_bool	take_fork(t_sim *sim, t_philos *philo,
 	pthread_mutex_t *fork)
 {
 	pthread_mutex_lock(fork);
-	if (check_death(sim, philo))
-	{
-		pthread_mutex_unlock(fork);
-		return (FALSE);
-	}
 	print_action(sim, philo, PHILO_FORK_MSG);
 	return (TRUE);
 }

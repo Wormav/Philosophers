@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/14 15:46:05 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:23:42 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,8 @@ static void	handle_meal(t_sim *sim, t_philos *philo)
 		philo->meals_eaten++;
 	}
 	pthread_mutex_unlock(&sim->write_lock);
-	if (!check_death(sim, philo))
-	{
-		print_action(sim, philo, PHILO_EAT_MSG);
-		usleep(sim->args->time_to_eat * 1000);
-	}
+	print_action(sim, philo, PHILO_EAT_MSG);
+	usleep(sim->args->time_to_eat * 1000);
 }
 
 static void	philosopher_eat(t_philos *philo, t_sim *sim)
@@ -35,8 +32,6 @@ static void	philosopher_eat(t_philos *philo, t_sim *sim)
 	pthread_mutex_t	*first_fork;
 	pthread_mutex_t	*second_fork;
 
-	if (check_death(sim, philo))
-		return ;
 	select_forks(philo, &first_fork, &second_fork);
 	if (!take_forks(sim, philo, first_fork, second_fork))
 		return ;
@@ -47,11 +42,8 @@ static void	philosopher_eat(t_philos *philo, t_sim *sim)
 
 static void	philosopher_sleep_and_think(t_philos *philo, t_sim *sim)
 {
-	if (check_death(sim, philo))
-		return ;
 	print_action(sim, philo, PHILO_SLEEP_MSG);
 	usleep(sim->args->time_to_sleep * 1000);
-	if (!check_death(sim, philo))
 		print_action(sim, philo, PHILO_THINK_MSG);
 }
 
@@ -63,8 +55,6 @@ void *philosopher_routine(void *arg)
     while (!check_death(philo->sim, philo))
     {
         philosopher_eat(philo, philo->sim);
-        if (check_death(philo->sim, philo))
-            break;
         philosopher_sleep_and_think(philo, philo->sim);
     }
     return (NULL);
