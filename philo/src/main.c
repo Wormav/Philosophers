@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/14 16:23:31 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:11:48 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void *single_philo_routine(void *arg)
     philo = (t_philos *)arg;
     sim = philo->sim;
     print_action(sim, philo, PHILO_FORK_MSG);
-    usleep(sim->args->time_to_die * 1000);
+    sleep_time(sim->args->time_to_die, philo, sim);
     print_action(sim, philo, PHILO_DEAD_MSG);
     pthread_mutex_lock(&sim->death_mutex);
     sim->philos_dead = TRUE;
