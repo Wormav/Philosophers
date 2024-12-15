@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/14 16:15:09 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:11:16 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	print_error(char *str);
 
 // time.c
 unsigned long get_time(void);
+void sleep_time(unsigned long time, t_philos *philo, t_sim *sim);
 
 // overflow.c
 t_bool	check_args_overflow( char **argv);
