@@ -6,13 +6,32 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/15 15:30:32 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/15 16:11:54 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 #include <stdio.h>
 #include <unistd.h>
+
+static t_bool check_all_philos_done(t_sim *sim)
+{
+    int i;
+
+    if (sim->args->eat_count_required <= 0)
+        return (FALSE);
+    i = 0;
+    while (i < sim->args->philo_count)
+    {
+        if (sim->philos[i].meals_eaten < sim->args->eat_count_required)
+            return (FALSE);
+        i++;
+    }
+    pthread_mutex_lock(&sim->write_lock);
+    sim->philos_dead = TRUE;
+    pthread_mutex_unlock(&sim->write_lock);
+    return (TRUE);
+}
 
 static void	handle_meal(t_sim *sim, t_philos *philo)
 {
@@ -58,14 +77,14 @@ void *philosopher_routine(void *arg)
     sim = philo->sim;
 
     if (philo->id % 2 == 0)
-        usleep(500);
+        usleep(1);
     while (!check_death(sim, philo))
     {
         philosopher_eat(philo, sim);
-        if (check_death(sim, philo))
+        if (check_death(sim, philo) || check_all_philos_done(sim))
             break;
         philosopher_sleep_and_think(philo, sim);
-        usleep(100);
+        usleep(1);
     }
     return (NULL);
 }
