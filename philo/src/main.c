@@ -6,15 +6,12 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:10:52 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:55:53 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:38:11 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
-#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 int	main(int argc, char **argv)
 {

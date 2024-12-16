@@ -6,12 +6,11 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:05:22 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/15 15:31:20 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:34:11 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
-#include <stdio.h>
 
 t_bool	check_death(t_sim *sim, t_philos *philo)
 {
@@ -22,8 +21,7 @@ t_bool	check_death(t_sim *sim, t_philos *philo)
 	if (!is_dead && get_time() - philo->last_meal_time
 		> (unsigned long)sim->args->time_to_die)
 	{
-		printf(PHILO_ID_MSG, get_time() - sim->start_time,
-			philo->id, PHILO_DEAD_MSG);
+		print_action(sim, philo, PHILO_ID_MSG);
 		sim->philos_dead = TRUE;
 		is_dead = TRUE;
 	}

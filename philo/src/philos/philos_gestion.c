@@ -6,13 +6,12 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:37:25 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:15:29 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:30:08 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
 #include <stdlib.h>
-#include <pthread.h>
 
 t_bool	init_philos(t_sim *sim)
 {

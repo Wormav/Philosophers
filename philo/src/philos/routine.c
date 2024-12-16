@@ -6,12 +6,11 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 09:01:34 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:35:03 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
-#include <stdio.h>
 #include <unistd.h>
 
 static t_bool	check_all_philos_done(t_sim *sim)

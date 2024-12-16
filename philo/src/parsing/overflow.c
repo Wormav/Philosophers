@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 08:50:36 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/09 12:46:41 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:17:30 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,25 +35,6 @@ static char	*trim_leading_zeros(char *str)
 	}
 	return (trimmed);
 }
-
-// static void	trim_zero_from_argv(char **argv)
-// {
-// 	int		i;
-// 	char	*with_sign;
-
-// 	i = 0;
-// 	while (argv[i])
-// 	{
-// 		with_sign = trim_leading_zeros(argv[i]);
-// 		if (!with_sign)
-// 		{
-// 			argv[i] = NULL;
-// 			return ;
-// 		}
-// 		argv[i] = with_sign;
-// 		i++;
-// 	}
-// }
 
 static t_bool	is_not_overflow( char *nbr, char *min, char *max)
 {
