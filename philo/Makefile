@@ -23,8 +23,10 @@ SRCS =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/philos/routine.c \
 		$(SRC_DIR)/philos/routine_utils.c \
 		$(SRC_DIR)/philos/print_action.c \
+		$(SRC_DIR)/philos/single_philo.c \
 		$(SRC_DIR)/sim/sim_init.c \
-		$(SRC_DIR)/memory/free.c
+		$(SRC_DIR)/memory/free.c \
+		$(SRC_DIR)/memory/threads.c
 
 # Génération automatique des fichiers objets
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
