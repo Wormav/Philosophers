@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:56:50 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:57:08 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef int	t_bool;
 
 # define NO_PHILO_MSG "Error: philo count must be at least 1"
 
-# define PHILO_ID_MSG "⌚ %lu Philosopher %d %s\n\n"
+# define PHILO_ID_MSG "⌚ [%lums] Philosopher %d %s\n\n"
 
 # define PHILO_SLEEP_MSG "is sleeping 🛏️"
 
