@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:09:49 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:16:08 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef int	t_bool;
 
 # define NO_PHILO_MSG "Error: philo count must be at least 1"
 
-# define PHILO_ID_MSG "⌚ %lu Philosopher %d %s\n\n"
+# define PHILO_ID_MSG "⌚ [%lums] Philosopher %d %s\n\n"
 
 # define PHILO_SLEEP_MSG "is sleeping 🛏️"
 
@@ -49,6 +49,7 @@ typedef struct s_args
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		eat_count_required;
+	t_bool	case_death_thinking;
 }	t_args;
 
 typedef struct s_philos
@@ -118,5 +119,11 @@ void			select_forks(t_philos *philo, pthread_mutex_t **first_fork,
 
 // free.c
 void			cleanup_sim(t_sim *sim);
+
+// single_philo.c
+t_bool			handle_single_philosopher(t_sim *sim);
+
+// threads.c
+int				handle_simulation(t_args *args, t_sim *sim);
 
 #endif

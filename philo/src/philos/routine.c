@@ -6,12 +6,11 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:20:59 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:03:09 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/philo.h"
-#include <stdio.h>
 #include <unistd.h>
 
 static t_bool	check_all_philos_done(t_sim *sim)
@@ -66,6 +65,8 @@ static void	philosopher_sleep_and_think(t_philos *philo, t_sim *sim)
 	print_action(sim, philo, PHILO_SLEEP_MSG);
 	sleep_time(sim->args->time_to_sleep, philo, sim);
 	print_action(sim, philo, PHILO_THINK_MSG);
+	if (sim->args->case_death_thinking)
+		sleep_time(sim->args->time_to_eat, philo, sim);
 }
 
 void	*philosopher_routine(void *arg)

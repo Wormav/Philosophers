@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 11:55:28 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/15 15:21:28 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/16 09:35:46 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,11 @@ static int	init_forks(t_sim *sim, int philo_count)
 	{
 		if (pthread_mutex_init(&sim->forks[i], NULL) != 0)
 		{
-			while (--i >= 0)
+			while (i >= 0)
+			{
 				pthread_mutex_destroy(&sim->forks[i]);
+				i--;
+			}
 			return (0);
 		}
 		i++;
