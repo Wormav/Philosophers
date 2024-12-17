@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 15:54:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 08:11:19 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:50:54 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ void	sleep_time(unsigned long time, t_philos *philo, t_sim *sim)
 	{
 		if (check_death(sim, philo))
 			return ;
-		usleep(time / 10);
+		usleep(1);
 	}
 }

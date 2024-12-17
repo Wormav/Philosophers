@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/16 13:57:08 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:16:08 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_args
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		eat_count_required;
+	t_bool	case_death_thinking;
 }	t_args;
 
 typedef struct s_philos

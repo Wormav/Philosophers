@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:21:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/10 19:48:31 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:30:39 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	parse_arg(char	**argv, t_args *args)
 	args->time_to_sleep = ft_atoi(argv[4]);
 	if (argv[5])
 		args->eat_count_required = ft_atoi(argv[5]);
+	args->case_death_thinking = FALSE;
 }
 
 t_bool	parsing_process(int argc, char **argv, t_args *args)
