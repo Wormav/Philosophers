@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:00:46 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/17 13:03:09 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:18:15 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ static t_bool	check_all_philos_done(t_sim *sim)
 {
 	int	i;
 
-	if (sim->args->eat_count_required <= 0)
+	if (!sim->args->eat_count_required)
 		return (FALSE);
+	pthread_mutex_lock(&sim->write_lock);
 	i = 0;
 	while (i < sim->args->philo_count)
 	{
 		if (sim->philos[i].meals_eaten < sim->args->eat_count_required)
+		{
+			pthread_mutex_unlock(&sim->write_lock);
 			return (FALSE);
+		}
 		i++;
 	}
-	pthread_mutex_lock(&sim->write_lock);
 	sim->philos_dead = TRUE;
 	pthread_mutex_unlock(&sim->write_lock);
 	return (TRUE);
@@ -64,7 +67,8 @@ static void	philosopher_sleep_and_think(t_philos *philo, t_sim *sim)
 {
 	print_action(sim, philo, PHILO_SLEEP_MSG);
 	sleep_time(sim->args->time_to_sleep, philo, sim);
-	print_action(sim, philo, PHILO_THINK_MSG);
+	if (!check_all_philos_done(sim))
+		print_action(sim, philo, PHILO_THINK_MSG);
 	if (sim->args->case_death_thinking)
 		sleep_time(sim->args->time_to_eat, philo, sim);
 }

@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 13:39:08 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/17 13:16:08 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:14:41 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef int	t_bool;
 # define ARGUMENT_LIMIT_MSG "Error: Arguments INT limits."
 
 # define INVALID_ARG_MSG "Error: Invalid argument format."
+
+# define INVALID_LAST_ARG "Error: The last argument must be at least 1."
 
 # define NEGATIVE_ARG_MSG "Error: Arguments must be non-negative integers."
 

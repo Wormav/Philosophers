@@ -6,7 +6,7 @@
 /*   By: jlorette <jlorette@42angouleme.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 11:21:21 by jlorette          #+#    #+#             */
-/*   Updated: 2024/12/17 12:30:39 by jlorette         ###   ########.fr       */
+/*   Updated: 2024/12/20 08:13:12 by jlorette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ t_bool	parsing_process(int argc, char **argv, t_args *args)
 		return (FALSE);
 	}
 	if (!check_args_format(argv))
-	{
-		print_error(INVALID_ARG_MSG);
 		return (FALSE);
-	}
 	if (check_args_overflow(argv))
 	{
 		print_error(ARGUMENT_LIMIT_MSG);
